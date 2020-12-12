@@ -1,0 +1,31 @@
+1. Arrumar a placa
+
+Project Navigator: hierarchy
+
+duplo clique na placa Cyclone V: ...
+
+Usar o filtro e pesquisar por 5CSXFC6D6F31C6 no filtro e selecionar
+
+
+2. Configurar os pinos
+Assignments -> pin planner
+
+abrir o manual: link no tutorial 1
+botar o location correto do clock_50
+configurar o stepmotor_{dir,en,vel[0],vel[1]} com location de switches
+configurar o stepmotor_pio[{0,1,2,3}] com os locations do GPIO[{0,1,2,3}] (mesma ordem)
+
+
+Botar todos os I/O Standard para 3-3V LVTTL (control+c/v funciona. usar control pra selecionar tudo)
+
+3. Compilar e programar na placa
+Utilizar o .sdc do tutorial e renomear o arquivo para Entrega_1.sdc
+
+Compilar: Control+L ou usar o botão do lado do stop
+Tools -> Programmer
+
+Auto detect: selecionar a placa correta
+duplo clique em file no novo item do menu
+selecionar o .sof
+selecionar o primeiro checkbox
+Start
