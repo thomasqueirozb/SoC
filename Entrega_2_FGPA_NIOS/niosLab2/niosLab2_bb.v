@@ -1,10 +1,14 @@
 
 module niosLab2 (
 	clk_clk,
+	leds_export,
 	reset_reset_n,
-	leds_export);	
+	sw_export,
+	vroomvroom_export);	
 
 	input		clk_clk;
-	input		reset_reset_n;
 	output	[5:0]	leds_export;
+	input		reset_reset_n;
+	input	[9:0]	sw_export;
+	output	[3:0]	vroomvroom_export;
 endmodule

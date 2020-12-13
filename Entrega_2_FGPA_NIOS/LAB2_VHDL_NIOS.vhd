@@ -7,8 +7,11 @@ entity LAB2_VHDL_NIOS is
         fpga_clk_50        : in  std_logic;             -- clock.clk
 
         -- I/Os
-        fpga_led_pio       : out std_logic_vector(5 downto 0)
-  );
+        fpga_led_pio  : out std_logic_vector(5 downto 0);
+		  stepmotor_pio : out std_logic_vector(3 downto 0);
+		  switch        : in  std_logic_vector(9 downto 0)
+    );
+  
 end entity LAB2_VHDL_NIOS;
 
 architecture rtl of LAB2_VHDL_NIOS is
@@ -16,7 +19,9 @@ architecture rtl of LAB2_VHDL_NIOS is
 component niosLab2 is port (
   clk_clk       : in  std_logic                    := 'X'; -- clk
   reset_reset_n : in  std_logic                    := 'X'; -- reset_n
-  leds_export   : out std_logic_vector(5 downto 0)         -- export
+  leds_export   : out std_logic_vector(5 downto 0);        -- export
+  sw_export     : in  std_logic_vector(9 downto 0);        -- export
+  vroomvroom_export : out std_logic_vector(3 downto 0)     -- export
 );
 end component niosLab2;
 
@@ -25,7 +30,9 @@ begin
 u0 : component niosLab2 port map (
   clk_clk       => fpga_clk_50,    --  clk.clk
   reset_reset_n => '1',            --  reset.reset_n
-  leds_export   => fpga_led_pio    --  leds.export
+  leds_export   => fpga_led_pio,   --  leds.export
+  sw_export     => switch,
+  vroomvroom_export => stepmotor_pio
 );
 
 end rtl;
